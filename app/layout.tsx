@@ -1,20 +1,16 @@
 import type { Metadata } from "next";
-import { Inter, Geist, Geist_Mono } from "next/font/google";
+import { Inter, VT323 } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import NavBar from "@/components/layout/navbar";
 
 const inter = Inter({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const vt = VT323({
+  weight: ['400'],
+}); 
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,9 +25,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${vt.className} antialiased`}
       >
-        {children}
+        <NavBar />
+        <div className="grid grid-cols-1 md:grid-cols-[200_1fr] gap-4 p-4">
+          <div className={`md:col-start-2 md:col-end-3 text-4xl`}>
+            {children}
+          </div>
+        </div>
+
       </body>
     </html>
   );
