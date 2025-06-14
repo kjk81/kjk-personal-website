@@ -100,7 +100,7 @@ export default function NavBar() {
     return(
         <div className="text-foreground m-8 ml-0 mt-0 min-h-screen w-screen md:w-48 fixed top-0 left-0 z-50 md:border-r md:border-foreground/[0.1]">
             <DropButton click={handleClick} open={isOpen}/>
-            <nav className={`min-h-screen pt-6 bg-foreground/[0.02] flex justify-center h-full transition-opacity duration-150 ease-in-out ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'} md:opacity-100 md:pointer-events-auto`}>
+            <nav className={`min-h-screen md:pl-4 pt-6 bg-foreground/[0.02] flex justify-center h-full transition-opacity duration-150 ease-in-out ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'} md:opacity-100 md:pointer-events-auto`}>
                 <Links />
             </nav>
         </div>
