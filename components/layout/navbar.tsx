@@ -54,7 +54,6 @@ function Links() {
         "About",
         "Experience",
         "Projects",
-        "Contact",
     ];
 
     const nextProjectTargets = [
