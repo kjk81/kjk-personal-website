@@ -29,7 +29,7 @@ export default function RootLayout({
       >
         <NavBar />
         <div className="grid grid-cols-1 md:grid-cols-[200_1fr] gap-4 p-4">
-          <div className={`md:col-start-2 md:col-end-3 text-4xl`}>
+          <div className={`md:col-start-2 md:col-end-3 text-3xl`}>
             {children}
           </div>
         </div>

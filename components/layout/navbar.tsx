@@ -54,11 +54,13 @@ function Links() {
         "About",
         "Experience",
         "Projects",
+        // Personal section
     ];
 
     const nextProjectTargets = [
-        "Fantasy 3D Game",
+        "Wake Up Already",
         "MNIST Classifier",
+        "Fantasy 3D Game",
         "AVL Tree Interface",
     ];
 
