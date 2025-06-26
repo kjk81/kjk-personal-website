@@ -6,7 +6,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="px-8 flex flex-col items-center w-full">
+      <div className="p-8 flex flex-col items-center w-full">
         <Home />
         <About />
         <Experience />
