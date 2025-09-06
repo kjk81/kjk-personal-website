@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import { Button } from "./button";
 function ToggleButton({ isOpen, onClick }: { isOpen: boolean; onClick: () => void }) {
     return (
-        <Button variant="outline" onClick={onClick} className={`text-3xl`}>
+        <Button variant="outline" onClick={onClick} className={`cursor-pointer text-3xl`}>
             {isOpen ? "Hide ▲" : "See More ▼"}
         </Button>
     );
@@ -20,12 +20,12 @@ export default function ToggleSection({children} : {children?: React.ReactNode} 
             detailsRef.current?.scrollIntoView({ behavior: "smooth" });
         }
 
-        setIsOpen(!isOpen);
+        setIsOpen(prev => !prev);
     }
 
     return (
         <section>
-            <div className={`flex justify-center ${isOpen ? "sticky top-1 z-1" : ""} align-center`}>
+            <div className={`flex justify-center ${isOpen ? "md:sticky md:top-1 md:z-1" : ""} items-center`}>
                 <ToggleButton isOpen={isOpen} onClick={handleToggle} />
             </div>
             {isOpen ? (

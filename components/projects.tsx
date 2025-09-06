@@ -15,7 +15,7 @@ function MainImage({ind, ...props }: {ind: number} & ImageProps) {
     }
 
     return (
-        <div className={`w-full md:w-250 h-125 mb-4 border-accent${ind == 0 ? 2 : 1} border-[2px] hover:border-none transition ease duration-500`}>
+        <div className={`w-full h-125 mb-4 border-accent${ind == 0 ? 2 : 1} border-[2px] hover:border-none transition ease duration-500`}>
             <Image className="object-cover w-full h-full" {...props} />
         </div>
     );
@@ -28,7 +28,7 @@ function SmallImage({index, updateSubIndex, ...props} : {index: number, updateSu
     }
 
     return (
-        <div onClick={handleClick} className={`max-w-250 h-40 hover:border-[4px] border-accent3 col-span-1`}>
+        <div onClick={handleClick} className={`max-w-full h-40 hover:border-[4px] border-accent3 col-span-1`}>
             <Image className="object-cover w-full h-full" {...props} />
         </div>
     );
