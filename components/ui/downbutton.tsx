@@ -6,7 +6,7 @@ export default function DownButton({
   return (
     <button
       onClick={handleClick}
-      className="absolute bottom-4 text-center p-2 text-foreground transition-colors border rounded-sm border-foreground/[0.5] cursor-pointer hover:bg-foreground hover:text-background"
+      className="hidden md:inline-block absolute bottom-4 text-center p-2 text-foreground transition-colors border rounded-sm border-foreground/[0.5] cursor-pointer hover:bg-foreground hover:text-background"
     >
       ↓
     </button>

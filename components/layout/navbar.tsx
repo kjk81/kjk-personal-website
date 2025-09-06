@@ -104,6 +104,12 @@ function NavLinkExtended({
     );
 }
 
+export const nextProjectTargets = [
+        "Wake Up Already",
+        "CalcSpace",
+        "GPA Predictor"
+    ];
+
 function Links() {
     const targets = [
         "About",
@@ -112,12 +118,6 @@ function Links() {
         // Personal section
     ];
 
-    const nextProjectTargets = [
-        "Wake Up Already",
-        "MNIST Classifier",
-        "Fantasy 3D Game",
-        "AVL Tree Interface",
-    ];
 
     return (
         <div className="flex flex-col justify-between items-center md:items-end">

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div id="home" className="pt-12 flex flex-col md:flex-row justify-center h-screen gap-8">
+    <div id="home" className="pt-12 flex flex-col md:flex-row justify-center h-fit md:h-screen gap-8">
           <div className="max-w-md">
             <Image
               src="/profile.jpg"

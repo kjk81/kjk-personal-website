@@ -1,42 +1,6 @@
-"use client";
-
 import FadeOnView from "@/components/ui/fadeonview";
-import Image from "next/image";
-import { ImageProps } from "next/image";
-import {
-    Carousel,
-    CarouselContent,
-    CarouselPrevious,
-    CarouselNext,
-    CarouselItem,
-} from "@/components/ui/carousel";
-
-function CarouselImage({ index, ...props }: { index: number } & ImageProps) {
-    const borderColors = ["border-accent1", "border-accent2", "border-accent3"];
-    const borderColor = borderColors[index % borderColors.length];
-    return (
-        <div className={`w-full h-96 ${borderColor} border-y-[4px]`}>
-            <Image className="object-cover w-full h-full" {...props} />
-        </div>
-    );
-}
-
-function ImageCarousel({ images }: { images: ImageData[] }) {
-    const randi = Math.floor(Math.random() * 12);
-    return (
-        <Carousel opts={{ loop: true }}>
-            <CarouselContent>
-                {images.map((image, index) => (
-                    <CarouselItem key={index}>
-                        <CarouselImage index={index + randi} {...image} />
-                    </CarouselItem>
-                ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-        </Carousel>
-    );
-}
+import {ImageCarousel, SkillCarousel} from "@/components/ui/imagecarousel";
+import ToggleSection from "@/components/ui/togglesection";
 
 function ExperienceCard({
     images,
@@ -46,6 +10,7 @@ function ExperienceCard({
     location,
     description,
     alt,
+    skills
 }: {
     images: ImageData[];
     org: string;
@@ -54,38 +19,46 @@ function ExperienceCard({
     location: string;
     description: React.ReactNode;
     alt?: boolean;
+    skills?: string[];
 }) {
     return (
         <FadeOnView threshold={0.2}>
-            <div className="py-10 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-16">
+            <div className="px-4 py-10 grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-8 lg:gap-16 text-xl md:text-3xl">
                 {alt ? (
                     <>
                         <div>
                             <div className="flex flex-row justify-between">
                                 <h3 className="font-semibold">{org}</h3>
-                                <p>{date}</p>
+                                <p className="text-right">{date}</p>
                             </div>
                             <div className="flex flex-row justify-between">
                                 <p className="text-accent1">{role}</p>
-                                <p className="text-accent2">{location}</p>
+                                <p className="text-accent2 text-right">{location}</p>
                             </div>
-                            <p className="py-12 text-3xl">{description}</p>
-                        </div>{" "}
-                        <ImageCarousel images={images} />
+                            <p className="hidden md:block py-12">{description}</p>
+                        </div>
+                        <div className="flex flex-col gap-4">
+                            <ImageCarousel images={images} />
+                            {skills ? <SkillCarousel skills={skills} alt/> : null}
+                        </div>
+                        <p className="block md:hidden py-6">{description}</p>
                     </>
                 ) : (
                     <>
-                        <ImageCarousel images={images} />
+                        <div className="flex flex-col gap-4">
+                            <ImageCarousel images={images} />
+                            {skills ? <SkillCarousel skills={skills} /> : null}
+                        </div>
                         <div>
                             <div className="flex flex-row justify-between">
                                 <h3 className="font-semibold">{org}</h3>
-                                <p>{date}</p>
+                                <p className="text-right">{date}</p>
                             </div>
                             <div className="flex flex-row justify-between">
                                 <p className="text-accent1">{role}</p>
-                                <p className="text-accent2">{location}</p>
+                                <p className="text-accent2 text-right">{location}</p>
                             </div>
-                            <p className="py-12 text-3xl">{description}</p>
+                            <p className="py-12">{description}</p>
                         </div>
                     </>
                 )}
@@ -94,13 +67,88 @@ function ExperienceCard({
     );
 }
 
-interface ImageData {
+export interface ImageData {
     src: string;
     alt: string;
     width: number;
     height: number;
 }
 export default function Experience() {
+
+    function handleClick() {
+        return;
+    }
+
+    return (
+        <section
+            id="experience"
+            className="py-32 bg-background flex flex-col min-h-screen w-full"
+        >
+            <FadeOnView>
+                <h2 className="pb-12 text-5xl font-bold">Experience</h2>
+            </FadeOnView>
+            <section className="flex flex-col gap-16">
+                <ExperienceCard
+                    images={cometWebImageData}
+                    org="Comet Robotics"
+                    role="Web Developer"
+                    date="August 2024 - May 2025"
+                    location="Haymarket, VA"
+                    description={
+                    <>
+                        At COMET, I led the creation of a new website to represent over 50 members, coordinating with graphics teams for UI design and converting ideas into CSS.
+                        I also employed AWS Cloud Services for reliable hosting from wherever our competitions took us. In my spare time, I volunteered at several STEM events.
+                    </>}
+                    skills={["JavaScript", "CSS", "AWS", "Git", "UI/UX"]}
+                />
+                <ExperienceCard
+                    images={cometScoutingImageData}
+                    org="More on Comet Robotics..."
+                    role="Scouting Lead"
+                    date=""
+                    location=""
+                    description = {
+                    <>                       
+                        As scouting lead, I developed a wireless data transfer system with QR Codes andOpenCV during competitions, 
+                        ensuring that 10+ simultaneous users could consistently share their data. 
+                        I evaluated robot performance with NumPy, Pandas, and Matplotlib to inform our game strategy, taking our team to district playoffs. </>}
+                    skills ={["Python", "NumPy", "OpenCV", "Pandas", "Matplotlib"]}
+                />
+                <ExperienceCard
+                    images={cgiImageData}
+                    org="CGI Inc"
+                    role="Cybersecurity Intern"
+                    date="June 2024 - August 2024"
+                    location="Fairfax, VA"
+                    description={
+                        <>
+                            During my time at CGI Inc, I evaluated AI
+                            cybersecurity tools by testing them on open source
+                            projects with source control, increasing engineer
+                            efficiency and enterprise threat detection. I also
+                            designed digital safety curriculums for nationwide
+                            non-profits through in-depth consulting.
+                        </>
+                    }
+                    skills={["Git", "Linux", "Consulting", "Python"]}
+                    alt
+                />  
+                <ToggleSection>
+                    <ExperienceCard 
+                        images={aspireImageData}
+                        org="Team Aspire"
+                        role="Programmer"
+                        date="August 2024 - June 2025"
+                        location="Haymarket, VA"
+                        description={<></>}
+                />
+                </ToggleSection>
+            </section>
+        </section>
+    ); 
+}
+
+
     const cgiImageData: ImageData[] = [
         {
             src: "/exp/cgi-personal.jpg",
@@ -129,6 +177,12 @@ export default function Experience() {
             height: 4000,
         },
         {
+            src: "/exp/frc-strategy.jpg",
+            alt: "FRC Strategy Session",
+            width: 5629,
+            height: 3518,
+        },
+        {
             src: "/exp/ftc-robots.png",
             alt: "FTC Robots Web Viewer",
             width: 3767,
@@ -149,16 +203,16 @@ export default function Experience() {
     ];
     const cometScoutingImageData: ImageData[] = [
         {
-            src: "/exp/ftc-scout.png",
-            alt: "FTC Scouting App",
-            width: 3785,
-            height: 1957,
-        },
-        {
             src: "/exp/ftc-bar-chart.png",
             alt: "FTC Scouting Stat Analysis",
             width: 3495,
             height: 1860,
+        },
+        {
+            src: "/exp/ftc-scout.png",
+            alt: "FTC Scouting App",
+            width: 3785,
+            height: 1957,
         },
         {
             src: "/exp/ftc-scout-game.png",
@@ -179,56 +233,23 @@ export default function Experience() {
             height: 1965
         }
     ];
-
-    return (
-        <section
-            id="experience"
-            className="py-32 bg-background flex flex-col min-h-screen w-full"
-        >
-            <FadeOnView>
-                <h2 className="pb-12 text-5xl font-bold">Experience</h2>
-            </FadeOnView>
-            <section className="flex flex-col gap-16">
-                <ExperienceCard
-                    images={cometWebImageData}
-                    org="Comet Robotics"
-                    role="Web Developer"
-                    date="August 2024 - May 2025"
-                    location="Haymarket, VA"
-                    description={
-                    <>
-                        I led the creation of a new website to represent over 50 members, coordinating with graphics teams for UI design and converting ideas into CSS.
-                        I also employed AWS Cloud Services and S3 Buckets for reliable hosting and prompt page-loading. In my spare time, I volunteered at several STEM events.
-                    </>}
-                />
-                <ExperienceCard
-                    images={cometScoutingImageData}
-                    org="Further on Comet Robotics..."
-                    role="Scouting Lead"
-                    date=""
-                    location=""
-                    description = {<>                        I also implemented a wireless data transfer system through Python OpenCV to circumvent connection constraints during competitions. 
-                        I analyzed robot performance via NumPy, Pandas, and Matplotlib to inform team strategy, propelling our team to district playoffs. </>}
-                />
-                <ExperienceCard
-                    images={cgiImageData}
-                    org="CGI Inc"
-                    role="Cybersecurity Intern"
-                    date="June 2024-Aug.2024"
-                    location="Fairfax, VA"
-                    description={
-                        <>
-                            During my time at CGI Inc, I evaluated AI
-                            cybersecurity tools by testing them on open source
-                            projects with source control, increasing engineer
-                            efficiency and enterprise threat detection. I also
-                            designed digital safety curriculums for nationwide
-                            non-profits through in-depth consulting.
-                        </>
-                    }
-                    alt
-                />
-            </section>
-        </section>
-    );
-}
+    const aspireImageData: ImageData[] = [
+        {
+            src: "/exp/aspire-1.jpg",
+            alt: "ASPIRE Team",
+            width: 1049,
+            height: 600,
+        },
+        {
+            src: "/exp/aspire-2.jpg",
+            alt: "ASPIRE Robot",
+            width: 6000,
+            height: 4000,
+        },
+        {
+            src: "/exp/aspire-project.jpg",
+            alt: "ASPIRE Project",
+            width: 1645,
+            height: 2193,
+        }
+    ];
