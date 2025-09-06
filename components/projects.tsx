@@ -15,7 +15,7 @@ function MainImage({ind, ...props }: {ind: number} & ImageProps) {
     }
 
     return (
-        <div className={`w-full h-125 mb-4 border-accent${ind == 0 ? 2 : 1} border-[2px] hover:border-none transition ease duration-500`}>
+        <div className={`w-full h-125 mb-4 border-accent${ind == 0 ? 2 : 1} border-[2px] hover:border-[4px] transition ease duration-500`}>
             <Image className="object-cover w-full h-full" {...props} />
         </div>
     );
@@ -28,7 +28,7 @@ function SmallImage({index, updateSubIndex, ...props} : {index: number, updateSu
     }
 
     return (
-        <div onClick={handleClick} className={`max-w-full h-40 hover:border-[4px] border-accent3 col-span-1`}>
+        <div onClick={handleClick} className={`max-w-full h-40 hover:border-[2px] border-accent3 col-span-1`}>
             <Image className="object-cover w-full h-full" {...props} />
         </div>
     );
@@ -109,16 +109,16 @@ const projectImageData: ImageData[][] = [
     }],
     [
         {
-            src:"/projects/calcspace-1.jpg",
-            alt: "CalcSpace Start",
-            width: 1322,
-            height: 699
-        },
-        {
             src:"/projects/calcspace-2.jpg",
             alt: "CalcSpace Enemies",
             width: 1319,
             height: 708
+        },
+        {
+            src:"/projects/calcspace-1.jpg",
+            alt: "CalcSpace Start",
+            width: 1322,
+            height: 699
         },
         {
             src:"/projects/calcspace-3.jpg",
