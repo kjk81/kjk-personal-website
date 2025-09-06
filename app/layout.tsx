@@ -9,6 +9,7 @@ const inter = Inter({
 });
 
 const vt = VT323({
+  subsets: ["latin"],
   weight: ['400'],
 }); 
 
