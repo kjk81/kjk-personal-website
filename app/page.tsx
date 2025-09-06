@@ -1,6 +1,7 @@
 import Home from "@/components/home";
 import About from "@/components/about";
 import Experience from "@/components/experience";
+import Projects from "@/components/projects";
 
 export default function Page() {
 
@@ -10,6 +11,7 @@ export default function Page() {
         <Home />
         <About />
         <Experience />
+        <Projects />
       </div>
     </>
   );

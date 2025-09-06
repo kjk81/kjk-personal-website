@@ -1,6 +1,7 @@
 import FadeOnView from "@/components/ui/fadeonview";
 import {ImageCarousel, SkillCarousel} from "@/components/ui/imagecarousel";
 import ToggleSection from "@/components/ui/togglesection";
+import { HTMLAttributes } from "react";
 
 function ExperienceCard({
     images,
@@ -10,7 +11,8 @@ function ExperienceCard({
     location,
     description,
     alt,
-    skills
+    skills,
+    ...props
 }: {
     images: ImageData[];
     org: string;
@@ -20,10 +22,11 @@ function ExperienceCard({
     description: React.ReactNode;
     alt?: boolean;
     skills?: string[];
-}) {
+} & HTMLAttributes<HTMLDivElement>) {
+    const randi = Math.floor(Math.random() * 12);
     return (
         <FadeOnView threshold={0.2}>
-            <div className="px-4 py-10 grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-8 lg:gap-16 text-xl md:text-3xl">
+            <div className="px-4 py-10 grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-8 lg:gap-16 text-xl md:text-3xl" {...props}>
                 {alt ? (
                     <>
                         <div>
@@ -38,16 +41,16 @@ function ExperienceCard({
                             <p className="hidden md:block py-12">{description}</p>
                         </div>
                         <div className="flex flex-col gap-4">
-                            <ImageCarousel images={images} />
-                            {skills ? <SkillCarousel skills={skills} alt/> : null}
+                            <ImageCarousel images={images} randi={randi} />
+                            {skills ? <SkillCarousel skills={skills} randi={randi} alt/> : null}
                         </div>
                         <p className="block md:hidden py-6">{description}</p>
                     </>
                 ) : (
                     <>
                         <div className="flex flex-col gap-4">
-                            <ImageCarousel images={images} />
-                            {skills ? <SkillCarousel skills={skills} /> : null}
+                            <ImageCarousel images={images} randi={randi} />
+                            {skills ? <SkillCarousel skills={skills} randi={randi} /> : null}
                         </div>
                         <div>
                             <div className="flex flex-row justify-between">
@@ -100,6 +103,7 @@ export default function Experience() {
                         I also employed AWS Cloud Services for reliable hosting from wherever our competitions took us. In my spare time, I volunteered at several STEM events.
                     </>}
                     skills={["JavaScript", "CSS", "AWS", "Git", "UI/UX"]}
+                    id="webdev"
                 />
                 <ExperienceCard
                     images={cometScoutingImageData}
@@ -132,6 +136,7 @@ export default function Experience() {
                     }
                     skills={["Git", "Linux", "Consulting", "Python"]}
                     alt
+                    id="it"
                 />  
                 <ToggleSection>
                     <ExperienceCard 
@@ -141,7 +146,18 @@ export default function Experience() {
                         date="August 2024 - June 2025"
                         location="Haymarket, VA"
                         description={<></>}
+                        skills={["Java", "OpenCV", "Python"]}
                 />
+                    <ExperienceCard 
+                        images={refImageData}
+                        org="USA Hockey"
+                        role="Ice Hockey Referee"
+                        date="August 2021 - June 2024"
+                        location="Ashburn, Virginia"
+                        description = {<>   </>}
+                        skills={["Conflict Resolution", "Problem-solving", "Communication"]}
+                        alt
+                    />
                 </ToggleSection>
             </section>
         </section>
@@ -251,5 +267,14 @@ export default function Experience() {
             alt: "ASPIRE Project",
             width: 1645,
             height: 2193,
+        }
+    ];
+
+    const refImageData: ImageData[] = [
+        {
+        src:"/exp/reffing.jpg",
+        alt: "Kj officiating a hockey game",
+        width: 1607,
+        height: 750
         }
     ];

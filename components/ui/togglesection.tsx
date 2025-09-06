@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import { Button } from "./button";
 function ToggleButton({ isOpen, onClick }: { isOpen: boolean; onClick: () => void }) {
     return (
-        <Button variant="outline" onClick={onClick} className={`text-3xl ${isOpen ? "sticky" : ""}`}>
+        <Button variant="outline" onClick={onClick} className={`text-3xl`}>
             {isOpen ? "Hide ▲" : "See More ▼"}
         </Button>
     );
@@ -25,14 +25,14 @@ export default function ToggleSection({children} : {children?: React.ReactNode} 
 
     return (
         <section>
-            <div className="flex justify-center align-center">
+            <div className={`flex justify-center ${isOpen ? "sticky top-1 z-1" : ""} align-center`}>
                 <ToggleButton isOpen={isOpen} onClick={handleToggle} />
             </div>
-            {isOpen && (
+            {isOpen ? (
                 <div ref={detailsRef} className="mt-4">
                     {children}
                 </div>
-            )}
+            ): null }
         </section>
     );
 }

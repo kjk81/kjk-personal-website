@@ -13,6 +13,8 @@ import Autoscroll from "embla-carousel-auto-scroll";
 import Autoplay from "embla-carousel-autoplay";
 import React from "react";
 
+
+
 function CarouselImage({ index, ...props }: { index: number } & ImageProps) {
     const borderColors = ["border-accent1", "border-accent2", "border-accent3"];
     const borderColor = borderColors[index % borderColors.length];
@@ -23,8 +25,8 @@ function CarouselImage({ index, ...props }: { index: number } & ImageProps) {
     );
 }
 
-function ImageCarousel({ images }: { images: ImageData[] }) {
-    const randi = Math.floor(Math.random() * 12);
+function ImageCarousel({ images, randi }: { images: ImageData[], randi: number}) {
+    // randi = Math.floor(Math.random() * 12);
     return (
         <Carousel opts={{ loop: true }}>
             <CarouselContent>
@@ -40,12 +42,12 @@ function ImageCarousel({ images }: { images: ImageData[] }) {
     );
 }
 
-function SkillCarousel({ skills , alt }: { skills: string[] , alt?: boolean }) {
+function SkillCarousel({ skills , randi, alt }: { skills: string[] , randi:number, alt?: boolean }) {
     const plugin = alt ? React.useRef(Autoplay({ delay: 1500, stopOnInteraction: false })) : React.useRef(Autoscroll({ speed: 1, stopOnInteraction: false }));
 
-    const textColors = ["accent1", "accent2", "accent3", "gt"];
+    const textColors = ["accent1", "gt", "accent2", "accent3"];
     const textColor = (index: number) => textColors[index % textColors.length];
-    const randi = Math.floor(Math.random() * 12);
+    // const randi = Math.floor(Math.random() * 12);
 
     return (
         <Carousel plugins={[plugin.current]} opts={{ loop: true }}>

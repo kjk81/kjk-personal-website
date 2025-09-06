@@ -110,6 +110,11 @@ export const nextProjectTargets = [
         "GPA Predictor"
     ];
 
+    const expTargets = [
+        "Webdev @ Comet",
+        "IT @ CGI Inc."
+    ];
+
 function Links() {
     const targets = [
         "About",
@@ -135,10 +140,10 @@ function Links() {
                         key={target}
                         className="my-4 flex justify-center md:justify-start"
                     >
-                        {target === "Projects" ? (
+                        {target === "Experience" ? (
                             <NavLinkExtended
                                 target={target}
-                                nextTargets={nextProjectTargets}
+                                nextTargets={expTargets}
                             />
                         ) : (
                             <NavLink target={target} />
