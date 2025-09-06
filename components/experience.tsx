@@ -113,7 +113,7 @@ export default function Experience() {
                     location=""
                     description = {
                     <>                       
-                        As scouting lead, I developed a wireless data transfer system with QR Codes andOpenCV during competitions, 
+                        As scouting lead, I developed a wireless data transfer system with QR Codes and OpenCV during competitions, 
                         ensuring that 10+ simultaneous users could consistently share their data. 
                         I evaluated robot performance with NumPy, Pandas, and Matplotlib to inform our game strategy, taking our team to district playoffs. </>}
                     skills ={["Python", "NumPy", "OpenCV", "Pandas", "Matplotlib"]}
