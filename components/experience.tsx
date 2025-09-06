@@ -187,7 +187,7 @@ export default function Experience() {
     ];
     const cometWebImageData: ImageData[] = [
         {
-            src: "/exp/comet-volunteer.avif",
+            src: "/exp/comet-volunteer.jpg",
             alt: "Comet Volunteering",
             width: 6000,
             height: 4000,
