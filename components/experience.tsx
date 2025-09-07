@@ -95,7 +95,7 @@ export default function Experience() {
                     images={cometWebImageData}
                     org="Comet Robotics"
                     role="Web Developer"
-                    date="August 2024 - May 2025"
+                    date="Aug. 2024 - May 2025"
                     location="Haymarket, VA"
                     description={
                     <>
@@ -122,7 +122,7 @@ export default function Experience() {
                     images={cgiImageData}
                     org="CGI Inc"
                     role="Cybersecurity Intern"
-                    date="June 2024 - August 2024"
+                    date="June 2024 - Aug. 2024"
                     location="Fairfax, VA"
                     description={
                         <>
@@ -143,7 +143,7 @@ export default function Experience() {
                         images={aspireImageData}
                         org="Team Aspire"
                         role="Programmer"
-                        date="August 2024 - June 2025"
+                        date="Aug. 2024 - June 2025"
                         location="Haymarket, VA"
                         description={<></>}
                         skills={["Java", "OpenCV", "Python"]}
@@ -152,7 +152,7 @@ export default function Experience() {
                         images={refImageData}
                         org="USA Hockey"
                         role="Ice Hockey Referee"
-                        date="August 2021 - June 2024"
+                        date="Aug. 2021 - June 2024"
                         location="Ashburn, Virginia"
                         description = {<>   </>}
                         skills={["Conflict Resolution", "Problem-solving", "Communication"]}
