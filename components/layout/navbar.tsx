@@ -160,7 +160,7 @@ function DropButton({ open, click }: { open: boolean; click?: () => void }) {
     return (
         <button
             onClick={click}
-            className="absolute text-5xl p-4 md:hidden top-4 right-4 px-2 py-1 text-foreground transition-colors border rounded-sm border-foreground/[0.5] cursor-pointer hover:bg-foreground hover:text-background"
+            className="z-50 fixed text-5xl p-4 md:hidden top-4 right-4 px-2 py-1 text-foreground transition-colors border rounded-sm border-foreground/[0.5] cursor-pointer hover:bg-foreground hover:text-background"
         >
             {open ? "X" : "☰"}
         </button>
@@ -170,19 +170,18 @@ function DropButton({ open, click }: { open: boolean; click?: () => void }) {
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
 
-    const total_width = 48 + 16; // Width of the navbar in pixels including margin
 
     function handleClick() {
         setIsOpen(!isOpen);
     }
 
     return (
-        <div className="text-foreground m-8 ml-0 mt-0 min-h-screen w-screen md:w-48 fixed top-0 left-0 z-50 md:border-r md:border-foreground/[0.1]">
+        <div className="text-foreground md:m-8 md:ml-0 md:mt-0 md:h-screen md:sticky md:w-48 top-0 left-0 z-50 md:border-r md:border-foreground/[0.1]">
             <DropButton click={handleClick} open={isOpen} />
             <nav
-                className={`min-h-screen md:pl-4 pt-6 bg-background flex justify-center w-full h-full transition-opacity duration-150 ease-in-out ${
-                    isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-                } md:opacity-100 md:pointer-events-auto md:bg-background/[0.02]`}
+                className={`w-screen fixed min-h-screen md:pl-4 pt-6 bg-background flex justify-center md:w-full md:relative h-full transition-transform duration-150 ease-in-out ${
+                    isOpen ? "translate-x-0" : "-translate-x-full"
+                } md:translate-x-0 md:bg-background/[0.02]`}
             >
                 <Links />
             </nav>

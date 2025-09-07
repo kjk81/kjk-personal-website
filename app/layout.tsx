@@ -28,8 +28,9 @@ export default function RootLayout({
       <body
         className={`${vt.className} antialiased`}
       >
-        <NavBar />
+        
         <div className="grid grid-cols-1 md:grid-cols-[200_1fr] gap-4 p-4">
+          <NavBar />
           <div className={`md:col-start-2 md:col-end-3 text-xl md:text-3xl`}>
             {children}
           </div>
