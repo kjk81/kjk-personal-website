@@ -23,12 +23,11 @@ function MainImage({ind, ...props }: {ind: number} & ImageProps) {
 
 function SmallImage({index, updateSubIndex, ...props} : {index: number, updateSubIndex: (ind: number) => void} & ImageProps) {
     function handleClick() {
-        // TODO: Swap with main image
         updateSubIndex(index);
     }
 
     return (
-        <div onClick={handleClick} className={`max-w-full h-40 hover:border-[2px] border-accent3 col-span-1`}>
+        <div onClick={handleClick} className={`max-w-full h-40 hover:border-[2px] border-accent3 col-span-1 cursor-pointer`}>
             <Image className="object-cover w-full h-full" {...props} />
         </div>
     );
@@ -74,18 +73,18 @@ export default function Projects() {
     }
 
     return (
-            <div id="projects" className="flex flex-col md:grid grid-cols-[repeat(3,1fr)] grid-rows-[1fr_1fr_1fr]">
+            <div id="projects" className="flex flex-col lg:grid grid-cols-[1fr_1fr_1fr] grid-rows-[1fr_1fr_1fr]">
                 <div className="flex flex-col row-span-1 row-start-1 col-span-1 col-start-1">
-                    <h2 className="md:text-5xl text-accent3 pb-2">Projects</h2>
+                    <h2 className="text-2xl lg:text-5xl text-accent3 pb-2">Projects</h2>
                     {titles.map((title, index) => (
                         <h3 key={index} onClick={() => handleClick(index)} className={`${index == projectInd ? "text-accent1" : ""} py-2 cursor-pointer hover:underline decoration-accent1`}>{title}</h3>
                     ))}
                 </div>
-                <div className="hidden md:block row-span-2 row-start-2 col-start-1 col-span-1">
+                <div className="hidden lg:block row-span-2 row-start-2 col-start-1 col-span-1">
                     {textData[projectInd]}
                 </div>
                 <ImageSelector projectInd={projectInd} imageIndex={imageIndex} setImageIndex={updateSubIndex} className="row-span-2 row-start-1 col-start-2 col-end-4"/>
-                <div className="block md:hidden row-span-2 row-start-2 col-start-1 col-span-1">
+                <div className="block lg:hidden row-span-2 row-start-2 col-start-1 col-span-1 pt-2">
                     <div>{textData[projectInd]}</div>
                 </div>
             </div>
