@@ -25,7 +25,7 @@ export default function About() {
             >
               <FadeOnView>
                 <h2 className="font-bold text-5xl py-4">About Me</h2>
-                <span className="nd:text-3xl">I'm a freshman at <ColorText color="gt">Georgia Tech</ColorText>, majoring in Computer Science. Two of my interests include <ColorText color="accent1">machine learning</ColorText> and <ColorText color="accent2">game/graphics developement</ColorText>. You can see some of the projects I've made <Link href="#projects" className="text-accent3 underline hover:no-underline hover:text-accent3/80">here</Link>! Beyond programming, I love to hike, play sports like hockey, and read.</span>
+                <span className="nd:text-3xl">I'm a sophomore at <ColorText color="gt">Georgia Tech</ColorText>, majoring in Computer Science. Two of my interests include <ColorText color="accent1">machine learning</ColorText> and <ColorText color="accent2">game/graphics developement</ColorText>. You can see some of the projects I've made <Link href="#projects" className="text-accent3 underline hover:no-underline hover:text-accent3/80">here</Link>! Beyond programming, I love to hike, play sports like hockey, and read.</span>
               </FadeOnView>
             </section>
         </div>
